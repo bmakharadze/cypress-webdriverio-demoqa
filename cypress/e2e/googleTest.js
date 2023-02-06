@@ -1,0 +1,25 @@
+describe('store.google.com', ()=> {
+    it('Add item to cart test', ()=>{
+        cy.visit('/')
+        cy.get('.vG0dUe').find('span').then( tableRow => { 
+            cy.wrap(tableRow).should('contain','English').first().click()
+            cy.wrap(tableRow).should('contain','português')
+            cy.wrap(tableRow).should('contain','español')
+            cy.wrap(tableRow).should('contain','français')
+            cy.wrap(tableRow).should('contain','日本語')
+            cy.wrap(tableRow).should('contain','한국어')
+            cy.wrap(tableRow).should('contain','中文')
+            cy.wrap(tableRow).should('contain','Deutsch')
+            cy.wrap(tableRow).should('contain','dansk')
+            cy.wrap(tableRow).should('contain','Nederlands')
+
+            cy.get('[class="VfPpkd-vQzf8d"]').click()
+        })
+        // cy.get('[aria-label="Pixel Buds Pro Buy now"]').click()
+        // cy.get('[aria-label="Buy Pixel Buds Pro"]').should('contain','Buy').eq(0).click()
+        // cy.get('.VfPpkd-vQzf8d').should('contain','Add to cart').click()
+        // cy.wait(1000)
+        // cy.get('[data-test="header-cart"]').click()
+        // cy.get('.VfPpkd-vQzf8d').should('contain','Guest Checkout').eq(2).click()
+    })
+})

@@ -1,7 +1,7 @@
 const axios = require("axios");
 const expect = require("chai").expect;
 const baseUrl = "https://reqres.in/api";
-const expectedResponse = require("./expectedResponse.json");
+const expectedResponse = require("./fixtures/expectedResponse.json");
 
 describe('API tasks', function() {
     it('checks if expected data is correct or not and returns data.', async function() {
@@ -12,6 +12,7 @@ describe('API tasks', function() {
         console.log(response.data)
     });
       
+  
     it("returns specific data.", function() {
         return axios.get(baseUrl + "/users?page=2")
             .then(function(response){
@@ -23,13 +24,9 @@ describe('API tasks', function() {
                 done(error);
             });
     });
-
+    
+    const payload = require('./fixtures/payload.json');
     it("sends request with missing fields and validates response", function(done) {
-        const payload = {
-            email: "john@gmail.com",
-            first_name: "john"
-        };
-
         axios.post(baseUrl + "/users?page=2", payload)
             .then(function(response) {
                 expect(response.data).to.have.property("id");
@@ -41,14 +38,12 @@ describe('API tasks', function() {
             });
     });
 
+    const user = require('./fixtures/user.json');
     it('deletes a user and returns status code 204', function(done) {
-        const payload = {
-            name: 'Leanne Graham'
-        };
-
-        axios.delete(baseUrl + '/users?page=2',  payload )
+        axios.delete(baseUrl + '/users?page=2',  user )
             .then(function(response) {
                 expect(response.status).to.equal(204);
+                console.log(response.data);
                 done();
         })
         .catch(function(error) {
