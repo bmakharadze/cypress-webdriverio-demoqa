@@ -1,6 +1,7 @@
 import { LoginPage } from '../support/pageobjects/LoginPage'
 import { HomePage } from '../support/pageobjects/HomePage'
 import { SearchedProductPage } from '../support/pageobjects/SearchedProductPage';
+import data from '../fixtures/data.json';
 
 describe('Ecommerce test', () => { 
     const loginPage = new LoginPage();
@@ -9,15 +10,15 @@ describe('Ecommerce test', () => {
 
     it('Ecommerce test login and search.', () => { 
         //visiting log in/sign up page
-        cy.visit('/my-account/')
+        loginPage.openLoginPage()
         //log-ining
-        loginPage.login('bm','bm@mail.com')
+        loginPage.login(data.email, data.password)
         //switching to home page.
         cy.visit('/')
         //validating content
         homePage.getTopHeader().validateContent()
         //searching product in search bar.
-        homePage.searchProduct('Dress{enter}')
+        homePage.searchProduct(data.searchProduct + '{enter}')
         //sorting products by grid(Default)
         searchedProductPage.getFilterStyle().sortByGrid()
         //selecting sort By Price High To Low.
@@ -25,6 +26,6 @@ describe('Ecommerce test', () => {
         //printing out all product names
         searchedProductPage.printAllProductNames()
         //selecting specific product with product name.
-        searchedProductPage.selectProduct('Tokyo Talkies');
+        searchedProductPage.selectProduct(data.selectedProduct);
     })
 }) 

@@ -5,7 +5,7 @@ import { FilterColor } from '../components/FilterColor';
 
 export class SearchedProductPage {
     constructor() {
-        this.product = '[class="noo-product-inner"]';
+        this.product = '.noo-product-inner';
         this.filterSort = new FilterSort() 
         this.filterStyle = new FilterStyle() 
         this.filterSize = new FilterSize() 
@@ -33,7 +33,7 @@ export class SearchedProductPage {
     }
 
     printAllProductNames(){
-        cy.get('.noo-product-inner h3 a').each(($el) => {
+        cy.get(`${this.product} h3 a`).each(($el) => {
             cy.log($el.text())
         })
     }
