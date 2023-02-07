@@ -1,4 +1,4 @@
-export class Sorting {
+export class FilterSort {
     constructor() {
         this.sortSelector = 'select[class="orderby"]';
     }
@@ -34,4 +34,4 @@ export class Sorting {
 
 
 
-export const onSorting = new Sorting();
+export const onFilterSort = new FilterSort();

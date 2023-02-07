@@ -1,10 +1,41 @@
+import { FilterSort } from '../components/FilterSort';
+import { FilterStyle } from '../components/FilterStyle';
+import { FilterSize } from '../components/FilterSize';
+import { FilterColor } from '../components/FilterColor';
+
 export class SearchedProductPage {
-    constructor(product) {
-        this.product = product;
+    constructor() {
+        this.product = '[class="noo-product-inner"]';
+        this.filterSort = new FilterSort() 
+        this.filterStyle = new FilterStyle() 
+        this.filterSize = new FilterSize() 
+        this.filterColor = new FilterColor() 
+    }
+
+    getSorting(){
+        return this.filterSort
+    }
+
+    getFilterStyle(){
+        return this.filterStyle
+    }
+
+    getFilterSize(){
+        return this.filterSize
+    }
+
+    getFilterColor(){
+        return this.filterColor
     }
 
     selectProduct(productName) {
         cy.get(this.product).contains('h3 a', productName).click();
+    }
+
+    printAllProductNames(){
+        cy.get('.noo-product-inner h3 a').each(($el) => {
+            cy.log($el.text())
+        })
     }
 }
 
