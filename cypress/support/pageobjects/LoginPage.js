@@ -4,6 +4,11 @@ export class LoginPage {
         this.submitButton = '[value="Log in"]'
         this.nameField = '[name="username"]' 
         this.passwordField = '[name="password"]'
+        this.url = '/my-account/'
+    }
+
+    openLoginPage() {
+        cy.visit(this.url)
     }
 
     fillName(name) {

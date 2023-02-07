@@ -1,20 +1,33 @@
+import { TopHeader } from '../components/TopHeader';
+import { Header } from '../components/Header';
+
 export class HomePage {
 
     constructor() {
         this.searchProductInp = '[type="search"]'
-        this.searchProductBtn = '[class="noo-search"]'
+        this.topHeader = new TopHeader()
+        this.header = new Header() 
+        this.url = '/'
+    }
+
+    openHomePage() {
+        cy.visit(this.url)
     }
 
     searchProductInput(searchProductInp) {
         cy.get(this.searchProductInp).type(searchProductInp)
     }
 
-    searchProductButton() {
-        cy.get(this.searchProductBtn).click()
-    }
+    getTopHeader() {
+        return this.topHeader
+    } 
+
+    getHeader() {
+        return this.header
+    } 
 
     searchProduct(searchProductInp){ 
-        this.searchProductButton()
+        this.getHeader().clickSearch()
         this.searchProductInput(searchProductInp) 
     }
 

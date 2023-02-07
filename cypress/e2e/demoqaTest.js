@@ -1,25 +1,31 @@
 import { LoginPage } from '../support/pageobjects/LoginPage'
 import { HomePage } from '../support/pageobjects/HomePage'
-import { Sorting } from '../support/components/Sorting';
 import { SearchedProductPage } from '../support/pageobjects/SearchedProductPage';
+import data from '../fixtures/data.json';
 
 describe('Ecommerce test', () => { 
     const loginPage = new LoginPage();
     const homePage = new HomePage();
-    const sortOptions = new Sorting();
-    const product = new SearchedProductPage('[class="noo-product-inner"]');
+    const searchedProductPage = new SearchedProductPage();
 
     it('Ecommerce test login and search.', () => { 
-        cy.visit('/')
-        //log in
-        loginPage.login('bm','bm@mail.com')
+        //visiting log in/sign up page
+        loginPage.openLoginPage()
+        //log-ining
+        loginPage.login(data.email, data.password)
         //switching to home page.
-        cy.get('[alt="ToolsQA Demo Site"]').first().click()
+        homePage.openHomePage()
+        //validating content
+        homePage.getTopHeader().validateContent()
         //searching product in search bar.
-        homePage.searchProduct('Dress{enter}')
+        homePage.searchProduct(data.searchProduct + '{enter}')
+        //sorting products by grid(Default)
+        searchedProductPage.getFilterStyle().sortByGrid()
         //selecting sort By Price High To Low.
-        sortOptions.sortByPriceHighToLow();
+        searchedProductPage.getSorting().sortByPriceHighToLow()
+        //printing out all product names
+        searchedProductPage.printAllProductNames()
         //selecting specific product with product name.
-        product.selectProduct('Tokyo Talkies');
+        searchedProductPage.selectProduct(data.selectedProduct);
     })
 }) 
