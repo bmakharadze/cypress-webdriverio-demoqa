@@ -7,6 +7,11 @@ export class HomePage {
         this.searchProductInp = '[type="search"]'
         this.topHeader = new TopHeader()
         this.header = new Header() 
+        this.url = '/'
+    }
+
+    openHomePage() {
+        cy.visit(this.url)
     }
 
     searchProductInput(searchProductInp) {

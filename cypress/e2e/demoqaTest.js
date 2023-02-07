@@ -14,7 +14,7 @@ describe('Ecommerce test', () => {
         //log-ining
         loginPage.login(data.email, data.password)
         //switching to home page.
-        cy.visit('/')
+        homePage.openHomePage()
         //validating content
         homePage.getTopHeader().validateContent()
         //searching product in search bar.
