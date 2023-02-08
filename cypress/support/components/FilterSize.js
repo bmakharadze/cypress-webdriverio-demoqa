@@ -1,66 +1,84 @@
 export class FilterSize {
     constructor() {
-        this.filterSize = '.noo-woo-filter';
+        this.filterSize = 'select[name="filter_size"]';
     }
 
     selectOption(option) {
-        cy.get(this.filterSize).eq(1).select(option);
+        cy.get(this.filterSize).first().select(option);
     }
     
     filterByDefault() {
         this.selectOption('Filter size');
     }
 
-    sortByGrid() {
+    sortBy32() {
         this.selectOption('32');
     }
 
-    sortByList() {
+    sortBy34() {
         this.selectOption('34');
     }
 
-    sortByGrid() {
+    sortBy36() {
         this.selectOption('36');
     }
 
-    sortByList() {
+    sortBy37() {
         this.selectOption('37');
     }
 
-    sortByGrid() {
+    sortBy38() {
         this.selectOption('38');
     }
 
-    sortByList() {
+    sortBy40() {
         this.selectOption('40');
     }
 
-    sortByGrid() {
+    sortBy42() {
         this.selectOption('42');
     }
 
-    sortByList() {
+    sortBy44() {
         this.selectOption('44');
     }
 
-    sortByList() {
+    sortByLarge() {
         this.selectOption('Large');
     }
 
-    sortByGrid() {
+    sortByMedium() {
         this.selectOption('Medium');
     }
 
-    sortByList() {
+    sortByOne() {
         this.selectOption('One');
     }
 
-    sortByList() {
+    sortBySmall() {
         this.selectOption('Small');
     }
 
-    sortByGrid() {
+    sortByXLarge() {
         this.selectOption('X-Large');
+    }
+
+    //Validate the filter options using .should methods.
+    validateContent() {
+        cy.get(this.selectOption).should('contain', 'Filter size');
+        cy.get(this.selectOption).should('contain', '32');
+        cy.get(this.selectOption).should('contain', '34');
+        cy.get(this.selectOption).should('contain', '36');
+        cy.get(this.selectOption).should('contain', '37');
+        cy.get(this.selectOption).should('contain', '38');
+        cy.get(this.selectOption).should('contain', '40');
+        cy.get(this.selectOption).should('contain', '42');
+        cy.get(this.selectOption).should('contain', '44');
+        cy.get(this.selectOption).should('contain', 'Large');
+        cy.get(this.selectOption).should('contain', 'Medium');
+        cy.get(this.selectOption).should('contain', 'One');
+        cy.get(this.selectOption).should('contain', 'Small');
+        cy.get(this.selectOption).should('contain', 'X-Large');
     }
 }
 

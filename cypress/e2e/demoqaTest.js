@@ -8,21 +8,37 @@ describe('Ecommerce test', () => {
     const homePage = new HomePage();
     const searchedProductPage = new SearchedProductPage();
 
-    it('Ecommerce test login and search.', () => { 
+    it('Login test.', () => { 
         //visiting log in/sign up page
         loginPage.openLoginPage()
         //log-ining
         loginPage.login(data.email, data.password)
-        //switching to home page.
+    })
+
+    it.only('Validating content on header and searched product page.', () => { 
+        //visiting home page.
         homePage.openHomePage()
         //validating content
         homePage.getTopHeader().validateContent()
         //searching product in search bar.
         homePage.searchProduct(data.searchProduct + '{enter}')
+        //validating content
+        searchedProductPage.getFilterColor().validateContent()
+        //some error in this line 
+        //                  ˅˅˅
+        //searchedProductPage.getFilterSize().validateContent()
+        searchedProductPage.getFilterStyle().validateContent()
+        searchedProductPage.getFilterSort().validateContent()
+    })
+
+    it('Search product, filter and print all names.', () => { 
+        homePage.openHomePage()
+        //searching product in search bar.
+        homePage.searchProduct(data.searchProduct + '{enter}')
         //sorting products by grid(Default)
         searchedProductPage.getFilterStyle().sortByGrid()
         //selecting sort By Price High To Low.
-        searchedProductPage.getSorting().sortByPriceHighToLow()
+        searchedProductPage.getFilterSort().sortByPriceHighToLow()
         //printing out all product names
         searchedProductPage.printAllProductNames()
         //selecting specific product with product name.

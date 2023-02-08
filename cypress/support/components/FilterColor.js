@@ -1,10 +1,10 @@
 export class FilterColor {
     constructor() {
-        this.filterColor = '.noo-woo-filter';
+        this.filterColor = 'select[name="filter_color"]';
     }
 
     selectOption(option) {
-        cy.get(this.filterColor).eq(0).select(option);
+        cy.get(this.filterColor).first().select(option);
     }
 
     filterByDefault() {
@@ -82,6 +82,86 @@ export class FilterColor {
     sortByYellow() {
         this.selectOption('Yellow');
     }
+
+    //Validate the filter options using .contains, .then and .expect methods.
+    validateContent() {
+        cy.contains('Filter color').then(($element) => {
+            expect($element).to.be.visible;
+        });
+        
+        cy.contains('Beige').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Black').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Blue').then(($element) => {
+            expect($element).to.be.visible;
+        });
+        
+        cy.contains('Brown').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Dark Blue').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Green').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Grey').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Mauve').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Mustard').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Nude').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Orange').then(($element) => {
+            expect($element).to.be.visible;
+        });
+        
+        cy.contains('Pink').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Red').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Rose Gold').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Rust').then(($element) => {
+            expect($element).to.be.visible;
+        });
+        
+        cy.contains('silver').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('White').then(($element) => {
+            expect($element).to.be.visible;
+        });
+
+        cy.contains('Yellow').then(($element) => {
+            expect($element).to.be.visible;
+        });
+    }
+    
 }
 
 export const onFilterColor = new FilterColor();
