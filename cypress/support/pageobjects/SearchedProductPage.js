@@ -12,7 +12,7 @@ export class SearchedProductPage {
         this.filterColor = new FilterColor() 
     }
 
-    getSorting(){
+    getFilterSort(){
         return this.filterSort
     }
 

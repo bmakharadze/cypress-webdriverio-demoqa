@@ -19,6 +19,10 @@ export class FilterStyle {
         this.selectOption('List');
     }
 
+    //Validate the filter options using .should() and .and() methods.
+    validateContent() {
+        cy.get(this.filterStyle).eq(2).should('be.visible').and('contain', 'Filter style').and('contain', 'Grid').and('contain', 'List');
+    }
 }
 
 

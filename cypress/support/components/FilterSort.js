@@ -30,6 +30,21 @@ export class FilterSort {
     sortByPriceHighToLow() {
         this.selectOption('Sort by price: high to low');
     }
+
+    //Validate the filter options using .then and .should methods.
+    validateContent() {
+        cy.get(this.sortSelector).then(selectElement => {
+            cy.wrap(selectElement.first()).should('contain', 'Relevance');
+            cy.wrap(selectElement.first()).should('contain', 'Sort by popularity');
+            cy.wrap(selectElement.first()).should('contain', 'Sort by average rating');
+            cy.wrap(selectElement.first()).should('contain', 'Sort by latest');
+            cy.wrap(selectElement.first()).should('contain', 'Sort by price: low to high');
+            cy.wrap(selectElement.first()).should('contain', 'Sort by price: high to low');
+        });
+    }
+    
+    
+      
 }
 
 
