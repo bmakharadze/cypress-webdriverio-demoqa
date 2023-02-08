@@ -65,20 +65,20 @@ export class FilterSize {
 
     //Validate the filter options using .should methods.
     validateContent() {
-        cy.get(this.selectOption).should('contain', 'Filter size');
-        cy.get(this.selectOption).should('contain', '32');
-        cy.get(this.selectOption).should('contain', '34');
-        cy.get(this.selectOption).should('contain', '36');
-        cy.get(this.selectOption).should('contain', '37');
-        cy.get(this.selectOption).should('contain', '38');
-        cy.get(this.selectOption).should('contain', '40');
-        cy.get(this.selectOption).should('contain', '42');
-        cy.get(this.selectOption).should('contain', '44');
-        cy.get(this.selectOption).should('contain', 'Large');
-        cy.get(this.selectOption).should('contain', 'Medium');
-        cy.get(this.selectOption).should('contain', 'One');
-        cy.get(this.selectOption).should('contain', 'Small');
-        cy.get(this.selectOption).should('contain', 'X-Large');
+        cy.get(this.filterSize).should('be.visible').and('contain', 'Filter size');
+        cy.get(this.filterSize).should('contain', '32');
+        cy.get(this.filterSize).should('contain', '34');
+        cy.get(this.filterSize).should('contain', '36');
+        cy.get(this.filterSize).should('contain', '37');
+        cy.get(this.filterSize).should('contain', '38');
+        cy.get(this.filterSize).should('contain', '40');
+        cy.get(this.filterSize).should('contain', '42');
+        cy.get(this.filterSize).should('contain', '44');
+        cy.get(this.filterSize).should('contain', 'Large');
+        cy.get(this.filterSize).should('contain', 'Medium');
+        cy.get(this.filterSize).should('contain', 'One');
+        cy.get(this.filterSize).should('contain', 'Small');
+        cy.get(this.filterSize).should('contain', 'X-Large');
     }
 }
 

@@ -9,39 +9,26 @@ describe('Ecommerce test', () => {
     const searchedProductPage = new SearchedProductPage();
 
     it('Login test.', () => { 
-        //visiting log in/sign up page
         loginPage.openLoginPage()
-        //log-ining
         loginPage.login(data.email, data.password)
     })
 
-    it.only('Validating content on header and searched product page.', () => { 
-        //visiting home page.
+    it('Validating content on header and searched product page.', () => { 
         homePage.openHomePage()
-        //validating content
         homePage.getTopHeader().validateContent()
-        //searching product in search bar.
         homePage.searchProduct(data.searchProduct + '{enter}')
-        //validating content
         searchedProductPage.getFilterColor().validateContent()
-        //some error in this line 
-        //                  ˅˅˅
-        //searchedProductPage.getFilterSize().validateContent()
+        searchedProductPage.getFilterSize().validateContent()
         searchedProductPage.getFilterStyle().validateContent()
         searchedProductPage.getFilterSort().validateContent()
     })
 
     it('Search product, filter and print all names.', () => { 
         homePage.openHomePage()
-        //searching product in search bar.
         homePage.searchProduct(data.searchProduct + '{enter}')
-        //sorting products by grid(Default)
         searchedProductPage.getFilterStyle().sortByGrid()
-        //selecting sort By Price High To Low.
         searchedProductPage.getFilterSort().sortByPriceHighToLow()
-        //printing out all product names
         searchedProductPage.printAllProductNames()
-        //selecting specific product with product name.
         searchedProductPage.selectProduct(data.selectedProduct);
     })
 }) 
