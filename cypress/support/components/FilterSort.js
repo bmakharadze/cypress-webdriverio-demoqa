@@ -8,8 +8,8 @@ export class FilterSort {
         cy.get(this.sortSelector).first().select(option);
     }
 
-    sortByDefault() {
-        this.selectOption('Default sorting');
+    sortByRelevance() {
+        this.selectOption('Relevance');
     }
 
     sortByPopularity() {
@@ -35,7 +35,7 @@ export class FilterSort {
     //Validate the filter options using .then and .should methods.
     validateContent() {
         cy.get(this.sortSelector).then(selectElement => {
-            cy.wrap(selectElement.first()).should('contain', 'Default sorting');
+            cy.wrap(selectElement.first()).should('contain', 'Relevance');
             cy.wrap(selectElement.first()).should('contain', 'Sort by popularity');
             cy.wrap(selectElement.first()).should('contain', 'Sort by average rating');
             cy.wrap(selectElement.first()).should('contain', 'Sort by latest');

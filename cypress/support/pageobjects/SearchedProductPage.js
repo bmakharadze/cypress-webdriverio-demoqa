@@ -8,6 +8,8 @@ const priceEx = /[^0-9.-]+/g;
 export class SearchedProductPage {
     constructor() {
         this.product = '.noo-product-inner';
+        this.price = '.price span bdi'
+        this.circle = '.tp-loader' 
         this.filterSort = new FilterSort() 
         this.filterStyle = new FilterStyle() 
         this.filterSize = new FilterSize() 
@@ -40,6 +42,10 @@ export class SearchedProductPage {
         })
     }
 
+    waitForCircle() {
+        cy.waitForElementNotVisible(this.circle)
+    }
+
     //Validate the search results using .each(), .then() and .invoke() methods.
     validateSearchResults(searchText) {
         cy.get(this.product).each(($el) => {
@@ -56,7 +62,7 @@ export class SearchedProductPage {
     //Validate that price of the prodict is in the range.
     validatePriceRange(price) {
         cy.get(this.product).each(($el) => {
-            cy.wrap($el).find('.price span bdi').invoke('text').then((text) => {
+            cy.wrap($el).find(this.price).invoke('text').then((text) => {
                 try {
                     const parsedPrice = parseFloat(text.replace(priceEx, ''));
                     expect(parsedPrice).to.be.lessThan(price);

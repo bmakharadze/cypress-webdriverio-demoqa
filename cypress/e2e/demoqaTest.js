@@ -37,7 +37,10 @@ describe('Ecommerce test', () => {
 
     it('Waiting until loading circle hides ', () => {
         homePage.openHomePage()
-        homePage.waitUntilLoadingCircleHides()
+        homePage.waitForCircle()
+        homePage.searchProduct(data.searchProduct + '{enter}')
+        searchedProductPage.getFilterSort().sortByPriceHighToLow()
+        searchedProductPage.waitForCircle()
     })
     
 }) 

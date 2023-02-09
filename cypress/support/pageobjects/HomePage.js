@@ -5,9 +5,10 @@ export class HomePage {
 
     constructor() {
         this.searchProductInp = '[type="search"]'
+        this.circle = '.tp-loader'
+        this.url = '/'
         this.topHeader = new TopHeader()
         this.header = new Header() 
-        this.url = '/'
     }
 
     openHomePage() {
@@ -31,8 +32,8 @@ export class HomePage {
         this.searchProductInput(searchProductInp) 
     }
 
-    waitUntilLoadingCircleHides() {
-        cy.get('.tp-loader').should('not.be.visible');
+    waitForCircle() {
+        cy.waitForElementNotVisible(this.circle)
     }
     
 }
