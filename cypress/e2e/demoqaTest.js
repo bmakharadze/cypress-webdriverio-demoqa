@@ -25,7 +25,7 @@ describe('Ecommerce test', () => {
         searchedProductPage.validateSearchResults(data.searchProduct)
     })
 
-    it.only('Search product, filter and print all names. Open product page.', () => { 
+    it('Search product, filter and print all names. Open product page.', () => { 
         homePage.openHomePage()
         homePage.searchProduct(data.searchProduct + '{enter}')
         searchedProductPage.getFilterStyle().sortByGrid()
@@ -34,4 +34,10 @@ describe('Ecommerce test', () => {
         searchedProductPage.validatePriceRange(data.price)
         searchedProductPage.selectProduct(data.selectedProduct)
     })
+
+    it('Waiting until loading circle hides ', () => {
+        homePage.openHomePage()
+        homePage.waitUntilLoadingCircleHides()
+    })
+    
 }) 

@@ -3,13 +3,15 @@ import { FilterStyle } from '../components/FilterStyle';
 import { FilterSize } from '../components/FilterSize';
 import { FilterColor } from '../components/FilterColor';
 
+const priceEx = /[^0-9.-]+/g;
+
 export class SearchedProductPage {
     constructor() {
         this.product = '.noo-product-inner';
         this.filterSort = new FilterSort() 
         this.filterStyle = new FilterStyle() 
         this.filterSize = new FilterSize() 
-        this.filterColor = new FilterColor() 
+        this.filterColor = new FilterColor()
     }
 
     getFilterSort(){
@@ -56,7 +58,7 @@ export class SearchedProductPage {
         cy.get(this.product).each(($el) => {
             cy.wrap($el).find('.price span bdi').invoke('text').then((text) => {
                 try {
-                    const parsedPrice = parseFloat(text.replace(/[^0-9.-]+/g, ''));
+                    const parsedPrice = parseFloat(text.replace(priceEx, ''));
                     expect(parsedPrice).to.be.lessThan(price);
                 } catch (error) {
                     cy.log(`Assert failed: "${text}" is not a valid price`);

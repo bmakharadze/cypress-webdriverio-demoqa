@@ -1,13 +1,14 @@
 export class FilterSort {
+
     constructor() {
         this.sortSelector = 'select[class="orderby"]';
     }
 
     selectOption(option) {
-        cy.get('select[class="orderby"]').first().select(option);
+        cy.get(this.sortSelector).first().select(option);
     }
 
-    sortByRelevance() {
+    sortByDefault() {
         this.selectOption('Default sorting');
     }
 
@@ -42,11 +43,7 @@ export class FilterSort {
             cy.wrap(selectElement.first()).should('contain', 'Sort by price: high to low');
         });
     }
-    
-    
-      
+       
 }
-
-
 
 export const onFilterSort = new FilterSort();

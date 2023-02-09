@@ -31,6 +31,10 @@ export class HomePage {
         this.searchProductInput(searchProductInp) 
     }
 
+    waitUntilLoadingCircleHides() {
+        cy.get('.tp-loader').should('not.be.visible');
+    }
+    
 }
 
 export const onHomePage = new HomePage();
