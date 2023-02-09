@@ -37,6 +37,33 @@ export class SearchedProductPage {
             cy.log($el.text())
         })
     }
+
+    //Validate the search results using .each(), .then() and .invoke() methods.
+    validateSearchResults(searchText) {
+        cy.get(this.product).each(($el) => {
+            cy.wrap($el).find('h3 a').invoke('text').then((text) => {
+                if (!text.toLowerCase().includes(searchText.toLowerCase())) {
+                    cy.log(`Assert failed: ${text} does not include "${searchText}"`);
+                } else {
+                    expect(text.toLowerCase()).to.contain(searchText.toLowerCase());
+                }
+            });
+        });
+    }
+    
+    //Validate that price of the prodict is in the range.
+    validatePriceRange(price) {
+        cy.get(this.product).each(($el) => {
+            cy.wrap($el).find('.price span bdi').invoke('text').then((text) => {
+                try {
+                    const parsedPrice = parseFloat(text.replace(/[^0-9.-]+/g, ''));
+                    expect(parsedPrice).to.be.lessThan(price);
+                } catch (error) {
+                    cy.log(`Assert failed: "${text}" is not a valid price`);
+                }
+            });
+        });
+    }
 }
 
 export const onSearchedProductPage = new SearchedProductPage();

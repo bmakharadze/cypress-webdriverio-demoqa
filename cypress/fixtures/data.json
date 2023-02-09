@@ -2,5 +2,6 @@
     "email": "bm",
     "password": "bm@mail.com",
     "searchProduct": "Dress",
-    "selectedProduct": "Tokyo Talkies"
+    "selectedProduct": "Tokyo Talkies",
+    "price": 35
 }

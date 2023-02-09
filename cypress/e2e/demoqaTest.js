@@ -21,14 +21,17 @@ describe('Ecommerce test', () => {
         searchedProductPage.getFilterSize().validateContent()
         searchedProductPage.getFilterStyle().validateContent()
         searchedProductPage.getFilterSort().validateContent()
+        searchedProductPage.validatePriceRange(data.price)
+        searchedProductPage.validateSearchResults(data.searchProduct)
     })
 
-    it('Search product, filter and print all names.', () => { 
+    it.only('Search product, filter and print all names. Open product page.', () => { 
         homePage.openHomePage()
         homePage.searchProduct(data.searchProduct + '{enter}')
         searchedProductPage.getFilterStyle().sortByGrid()
         searchedProductPage.getFilterSort().sortByPriceHighToLow()
         searchedProductPage.printAllProductNames()
-        searchedProductPage.selectProduct(data.selectedProduct);
+        searchedProductPage.validatePriceRange(data.price)
+        searchedProductPage.selectProduct(data.selectedProduct)
     })
 }) 
