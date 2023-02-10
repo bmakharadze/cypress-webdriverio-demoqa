@@ -1,4 +1,5 @@
 export class FilterSort {
+
     constructor() {
         this.sortSelector = 'select[class="orderby"]';
     }
@@ -42,11 +43,7 @@ export class FilterSort {
             cy.wrap(selectElement.first()).should('contain', 'Sort by price: high to low');
         });
     }
-    
-    
-      
+       
 }
-
-
 
 export const onFilterSort = new FilterSort();

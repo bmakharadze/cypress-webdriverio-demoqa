@@ -5,9 +5,10 @@ export class HomePage {
 
     constructor() {
         this.searchProductInp = '[type="search"]'
+        this.circle = '.tp-loader'
+        this.url = '/'
         this.topHeader = new TopHeader()
         this.header = new Header() 
-        this.url = '/'
     }
 
     openHomePage() {
@@ -31,6 +32,10 @@ export class HomePage {
         this.searchProductInput(searchProductInp) 
     }
 
+    waitForCircle() {
+        cy.waitForElementNotVisible(this.circle)
+    }
+    
 }
 
 export const onHomePage = new HomePage();
