@@ -43,7 +43,7 @@ describe('Ecommerce test', () => {
         searchedProductPage.waitForCircle()
     })
     
-    it.only(''), () => {
+    it('Working on login'), () => {
         loginPage.openLoginPage()
         loginPage.login(data.email, data.password)
         cy.intercept('POST', 'https://shop.demoqa.com/my-account/').as('generateToken')
