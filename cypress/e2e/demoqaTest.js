@@ -43,4 +43,5 @@ describe('Ecommerce test', () => {
         searchedProductPage.waitForCircle()
     })
     
+    
 }) 
