@@ -44,7 +44,6 @@ describe('Ecommerce test', () => {
     })
     
     it.only(''), () => {
-        
         loginPage.openLoginPage()
         loginPage.login(data.email, data.password)
         cy.intercept('POST', 'https://shop.demoqa.com/my-account/').as('generateToken')
