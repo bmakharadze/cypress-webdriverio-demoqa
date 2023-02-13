@@ -3,5 +3,6 @@
     "password": "bm@mail.com",
     "searchProduct": "Dress",
     "selectedProduct": "Tokyo Talkies",
-    "price": 35
+    "price": 35,
+    "website": "https://shop.demoqa.com/my-account/"
 }
