@@ -1,3 +1,9 @@
 {
-    "first_name" : "Michael"
+    "first_name" : "Michael",
+    "email": "bm",
+    "password": "bm@mail.com",
+    "searchProduct": "Dress",
+    "selectedProduct": "Tokyo Talkies",
+    "price": 35,
+    "website": "https://shop.demoqa.com/my-account/"
 }

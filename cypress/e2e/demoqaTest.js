@@ -40,7 +40,6 @@ describe('Ecommerce test', () => {
         homePage.waitForCircle()
         homePage.searchProduct(data.searchProduct + '{enter}')
         searchedProductPage.getFilterSort().sortByPriceHighToLow()
-        searchedProductPage.waitForCircle()
     })
     
     it('Post request with cy.intercept()'), () => {
