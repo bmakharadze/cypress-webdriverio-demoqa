@@ -12,9 +12,12 @@ describe('Ecommerce test.', () => {
         await AccountPage.validateLogin(data.email)
     })
 
-    it.only('Home page search.', async () => {
+    it('Home page search.', async () => {
         await HomePage.open()
+        await HomePage.waitForCircle()
+        await HomePage.topHeader.validateContent()
         await HomePage.search(data.searchProduct)
+        await SearchedPage.selectProduct(data.selectedProduct)
     })
 
 })
