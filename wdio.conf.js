@@ -64,7 +64,8 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    }
+],
     //
     // ===================
     // Test Configurations
@@ -86,7 +87,7 @@ exports.config = {
     // logLevels: {
     //     webdriver: 'info',
     //     '@wdio/appium-service': 'info'
-    // },
+    // }, 
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
@@ -112,7 +113,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['chromedriver'],//chromedriver
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -134,8 +135,33 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
-
+    reporters: [
+        'spec',
+        [
+            'allure', 
+            {
+                outputDir: 'allure-results'
+            }
+        ],
+        [
+            'junit', 
+            {
+                outputDir: './reports/jenkins-reports/'
+            }
+        ],
+        [
+            "html-nice", 
+            {
+                outputDir: './reports/html-reports/',
+                filename: 'report.html',
+                reportTitle: 'Test Report Title',
+                linkScreenshots: true,
+                showInBrowser: true,
+                collapseTests: false,
+                useOnAfterCommandForScreenshot: false,
+            }
+        ]
+    ],
 
     
     //

@@ -6,13 +6,13 @@ const SearchedPage = require('../pageobjects/searched.page')
 
 describe('Ecommerce test.', () => {
 
-    it('Should login with valid credentials', async () => {
+    it.only('Should login with valid credentials', async () => {
         await LoginPage.open()
         await LoginPage.login(data.email, data.password)
         await AccountPage.validateLogin(data.email)
     })
 
-    it.only('Home page search.', async () => {
+    it('Home page search.', async () => {
         await HomePage.open()
         await HomePage.waitForCircle()
         await HomePage.topHeader.validateContent()
